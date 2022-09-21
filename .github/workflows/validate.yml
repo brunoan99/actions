@@ -1,14 +1,10 @@
-name: dependency-check-action
-on:
-  pull_request:
-    types: [opened, reopened]
-
+name: validate-action
+on: [pull_request]
 jobs:
   check-dependecys-and-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
