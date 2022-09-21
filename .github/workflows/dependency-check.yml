@@ -1,0 +1,15 @@
+name: dependency-check-action
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-dependecys:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
