@@ -8,4 +8,5 @@ describe('Test function', () => {
   test('Should sub run correctly', () => {
     expect(sub(2, 1)).toBe(1)
   })
+
 })
