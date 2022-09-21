@@ -1,15 +1,24 @@
 name: dependency-check-action
 on: 
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
-  check-dependecys:
+  check-dependecys-and-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: borales/actions-yarn@v3.0.0
+      - uses: actions/checkout@v1
+
+      - uses: actions/cache@v2
         with:
-          cmd: install
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Run Tests
+        run: yarn test:ci
+       
