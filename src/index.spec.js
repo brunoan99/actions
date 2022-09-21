@@ -1,7 +1,5 @@
 const { sum, sub } = require('.')
 
-main()
-
 describe('Test function', () => {
   test('Should sum run correctly', () => {
     expect(sum(1, 2)).toBe(3)
