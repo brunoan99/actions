@@ -3,6 +3,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
+    types: [opened, reopened]
 
 jobs:
   check-dependecys-and-tests:
